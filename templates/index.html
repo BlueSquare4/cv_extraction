@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV DATA 📥</title>
+    <!-- Responsive viewport meta tag to ensure proper scaling on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Basic styling for the table */
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #009879; /* Color for the table borders */
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #009879; /* Color for the table header */
+            color: white;
+        }
+        td {
+            background-color: #e9f6f2; /* Lighter shade for the table cells */
+        }
+        /* Styling for the form and button */
+        form {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        input[type="file"], input[type="submit"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background for the button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        /* Responsive adjustments */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 15px; /* Larger padding for easier readability on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload CV Files🗃️⬇️</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if table %}
+        <h2>Extracted Data</h2>
+        {{ table|safe }}
+        <a href="{{ url_for('download_file') }}"><button>Download Excel File</button></a>
+    {% endif %}
+</body>
+</html>
